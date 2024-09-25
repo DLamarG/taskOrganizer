@@ -3,14 +3,14 @@ from django.db import models
 # Create your models here.
 
 
-TITLE_CHOICES = {
-    "A": "Applications",
-    "N": "Networking",
-    "I": "Interviews",
-    "C": "Coding",
-    "P": "Projects",
-    "D": "Development",
-}
+TITLE_CHOICES = (
+    ("A", "Applications"),
+    ("N", "Networking"),
+    ("I", "Interviews"),
+    ("C", "Coding"),
+    ("P", "Projects"),
+    ("D", "Development"),
+)
 
 
 
