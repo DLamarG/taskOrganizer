@@ -2,5 +2,5 @@ docker-compose up -d --build
 
 
 sleep 5
-docker exec organizer-api-1 python /src/manage.py makemigrations
-docker exec organizer-api-1 python /src/manage.py migrate
+docker exec taskorganizer-api-1 python /src/manage.py makemigrations
+docker exec taskorganizer-api-1 python /src/manage.py migrate 
