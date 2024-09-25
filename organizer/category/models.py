@@ -12,11 +12,6 @@ TITLE_CHOICES = {
     "D": "Development",
 }
 
-# SHIRT_SIZES = {
-#         "S": "Small",
-#         "M": "Medium",
-#         "L": "Large",
-#     }
 
 
 class Category(models.Model):
