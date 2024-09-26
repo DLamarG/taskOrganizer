@@ -15,16 +15,29 @@ class AuthorList(generics.ListAPIView):
 
 
 # handles request and parses body for username and password
+
 class SignupView(CreateAPIView):
     queryset = User.objects.all()
     serializer_class = SignupSerializer
     permission_classes = [AllowAny]
 
     def perform_create(self, serializer):
-        if serializer.is_valid():
-            username = serializer.validated_data["username"]
-            password = serializer.validated_data["password"]
-            #create_user is special method. must be used to create user
-            user = User.objects.create_user(username=username, password=password)
-            user_profile = Author(user=user)
-            user_profile.save()
+        # Save the validated data using serializer's create method
+        user = serializer.save()
+        # Create an Author profile for the user
+        user_profile = Author(user=user)
+        user_profile.save()
+        
+# class SignupView(CreateAPIView):
+#     queryset = User.objects.all()
+#     serializer_class = SignupSerializer
+#     permission_classes = [AllowAny]
+
+#     def perform_create(self, serializer):
+#         if serializer.is_valid():
+#             username = serializer.validated_data["username"]
+#             password = serializer.validated_data["password"]
+#             #create_user is special method. must be used to create user
+#             user = User.objects.create_user(username=username, password=password)
+#             user_profile = Author(user=user)
+#             user_profile.save()

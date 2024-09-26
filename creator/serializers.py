@@ -11,8 +11,22 @@ class AuthorSerializer(serializers.ModelSerializer):
 
 
 
-
-class SignupSerializer(ModelSerializer):
+class SignupSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ["username", "password"]
+
+    def create(self, validated_data):
+        user = User(
+            username=validated_data['username']
+        )
+        # Hash the password before saving
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
+    
+    
+# class SignupSerializer(ModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ["username", "password"]
